@@ -6,7 +6,7 @@ import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { USER_AVATAR } from "../utils/constants";
+import { BG_URL, USER_AVATAR } from "../utils/constants";
 
 const Login = () => {
 
@@ -37,8 +37,7 @@ const Login = () => {
                     updateProfile(user, {
                         displayName: name.current.value,
                         photoURL: USER_AVATAR,
-                    }).then(() => {
-                        console.log(user);
+                    }).then(() => {                        
                         const { uid, email, displayName, photoURL } = auth.currentUser;
                         dispatch(addUser(
                             {
@@ -83,7 +82,7 @@ const Login = () => {
         <div>
             <Header />
             <div className="absolute">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/ad4b96d8-547c-4811-a738-9fd4d93731c5/web/IN-en-20250721-TRIFECTA-perspective_f34fb505-ef25-45d9-9aab-03cb2474de75_large.jpg"
+                <img src={BG_URL}
                     alt="body-img"
                 />
             </div>
